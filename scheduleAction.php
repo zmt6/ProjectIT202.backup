@@ -32,8 +32,9 @@ $stmt = $db->query("SELECT * FROM ProjectAccounts where username = '$enteredUser
 $result = $stmt->fetch();
 
 
+$hashed = hash('sha512', $enteredPassword);
 
-if($result['username'] == $enteredUsername && strlen($enteredUsername) > 0 && $result['password'] == $enteredPassword){ 
+if($result['username'] == $enteredUsername && strlen($enteredUsername) > 0 && $result['password'] == $hashed){ 
   
   $stmt = $db->query("UPDATE ProjectAccounts SET dogName = '$enteredDogName' WHERE username = '$enteredUsername' AND password = '$enteredPassword';"); 
   $stmt = $db->query("UPDATE ProjectAccounts SET date = '$enteredDate' WHERE username = '$enteredUsername' AND password = '$enteredPassword';"); 

@@ -24,7 +24,9 @@ $result = $stmt->fetch();
 echo "Database Username:".$result['username']."<br>";
 
 
-if($result['username'] == $enteredUsername && strlen($enteredUsername) > 0 && $result['password'] == $enteredPassword){
+$hashed = hash('sha512', $enteredPassword);
+
+if($result['username'] == $enteredUsername && strlen($enteredUsername) > 0 && $result['password'] == $hashed){
   echo "Login Succeded<br><br>";  
   header("Location: loggedIndex.html");
 } else {

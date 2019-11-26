@@ -32,7 +32,7 @@ if(strlen($enteredConfirmPassword) > 0 && isset($enteredConfirmPassword)){
 $hashed = hash('sha512', $enteredPassword);
 
 if(strlen($enteredPassword) > 0 && $enteredPassword == $enteredConfirmPassword){
-  $insert_query = "INSERT INTO ProjectAccounts (username, password, dogName, date) VALUES ('$enteredUsername', '$enteredPassword', 'NULL', 'NULL')";
+  $insert_query = "INSERT INTO ProjectAccounts (username, password, dogName, date) VALUES ('$enteredUsername', '$hashed', 'NULL', 'NULL')";
   $stmt = $db->prepare($insert_query);
   $r = $stmt->execute();
   
