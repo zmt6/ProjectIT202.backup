@@ -1,0 +1,66 @@
+<?php
+require('config.php');
+$conn_string = "mysql:host=$host;dbname=$database;charset=utf8mb4";
+$db = new PDO($conn_string, $username, $password);
+
+
+$stmt = $db->query("SELECT * from ProjectAccounts");
+$result = $stmt->fetch();
+
+
+  $enteredUsername = $_POST['Lname'];
+  $enteredPassword = $_POST['Lpassword'];
+  $enteredDogName = $_POST['Dname'];
+  $enteredDate = $_POST['date'];
+
+
+
+  
+  echo "Username Entered:".$enteredUsername."<br>";
+  echo "Password Entered:".$enteredPassword."<br>";
+  echo "Dog Name Entered:".$enteredDogName."<br>";
+  echo "Date Entered:".$enteredDate."<br><br><br><br>";
+
+//CHECK IF A USERNAME WAS ENTERED
+if(strlen($enteredUsername) > 0 && isset($enteredUsername)){
+  echo "Username Entered:".$enteredUsername."<br>";
+} else {
+  header("Location: loggedIndex.html#scedule");
+}
+//CHECK IF A PASSWORD WAS ENTERED
+if(strlen($enteredPassword) > 0 && isset($enteredPassword)){
+  echo "Password Entered:".$enteredPassword."<br>";
+} else {
+  header("Location: loggedIndex.html#scedule");
+}
+//CHECK IF A DOG NAME WAS ENTERED
+if(strlen($enteredDogName) > 0 && isset($enteredDogName)){
+  echo "Dog Name Entered:".$enteredDogName."<br>";
+} else {
+  header("Location: loggedIndex.html#scedule");
+}
+
+
+//CHECK IF AN APPOINTMENT DATE WAS ENTERED
+if(strlen($enteredDate) > 0 && isset($enteredDate)){
+  echo "Date Entered:".$enteredDate."<br>";
+} else {
+  header("Location: loggedIndex.html#scedule");
+}
+
+
+echo "RESULT PASSWORD:".$result['password']."<br>";
+
+
+/*
+if($result['username'] == $enteredUsername && strlen($enteredUsername) > 0 && $result['password'] == $enteredPassword){
+  echo "Login Succeded<br><br>";  
+  header("Location: success.html");
+} else {
+  echo "Login Failed<br><br>";
+  header("Location: loggedIndex.html#scedule");    
+}
+*/
+
+
+?>

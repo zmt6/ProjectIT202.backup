@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title> Dog Kennel | Homepage </title>
+		<title> Dog Kennel | Success </title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -30,47 +30,65 @@
 							<div class="inner">
                                                
                                                
-								<h1>Welcome</h1>
+								<h1>Successfully Registered </h1>   
                                                                     
                                                                     
-								<p>A service to schedule appointments for your dog!<br />
-								</p>
+								<p></p>
 							</div>
 						</div>
-						<nav>
+                    
+
+<nav>
 							<ul>
-								<li><a href="#login"> Login </a></li>
-								<li><a href="#register"> Register </a></li>
-								<!--<li><a href="#elements">Elements</a></li>-->
+
+								<li><a href="./index.html#"> Return </a></li>
 							</ul>
 						</nav>
+                   
+                   
 					</header>
 
 				<!-- Main -->
 					<div id="main">
     
-						<!-- Login -->
-							<article id="login">
-								<h2 class="major"> Login </h2>
+						<!-- Scedule Appointment -->
+							<article id="scedule">
+								<h2 class="major"> Scedule Appointment </h2>
                                          
                                          
                                                                                                                                                                     
-								<form method="post" action="./loginAction.php">
+								<form method="post" action="./scheduleAction.php">
                                                
                                                                                                                                              
-									<div class="fields">                                                                                                                                  
+									<div class="fields">
+										
+                                                                                                                                                                      
                     <!-- Login Name -->
                     <div class="field half">
-											<label for="Lname">Name</label>             
-											<input type="text" name="Lname" id="Lname" />
+											<label for="name">Name</label>             
+											<input type="text" name="Lname" id="name" />
 										</div>
                                   
                                   
                     <!-- Login Password -->                                                                                            
                     <div class="field half">
-											<label for="Lpassword">Password</label>                                                
-											<input type="password" name="Lpassword" id="Lpassword" />
-										</div>    
+											<label for="name">Password</label>                                                
+											<input type="password" name="Lpassword" id="password" />
+										</div>   
+                    
+                    <!-- Dog Name -->
+                    <div class="field half">
+											<label for="name">Dog Name</label>             
+											<input type="text" name="Dname" id="name" />
+										</div>
+                                  
+                                  
+                    <!-- Appointment Date -->                                                                                            
+                    <div class="field half">
+											<label for="date">Appointment Date</label>                                                
+											<input type="text" name="date" id="date" />
+										</div>                                                                                                                                                                                                                                    
+                                                                                                                     
 										<div></div>
 									</div>
                                                                                               
@@ -89,53 +107,8 @@
 									<li><a href="https://www.instagram.com/zach10ten/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 									<li><a href="https://github.com/zmt6/ProjectIT202.backup" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
 								</ul>
-							</article>
-                              
-                                  
-           <!-- Register -->
-							<article id="register">
-								<h2 class="major"> Register </h2>
-								<form method="post" action="./registerAction.php">
-                                               
-                                               
-									<div class="fields">
-										
-                    <!-- Register Name -->
-                    <div class="field half">
-											<label for="name">Name</label>             
-											<input type="text" name="Rname" id="name" />
-										</div>
-                    <div class="field half">
-										</div>
-                                  
-                                  
-                    <!-- Register Password -->                                                                                            
-                    <div class="field half">
-											<label for="name">Password</label>                                                
-											<input type="password" name="Rpassword" id="password" />
-										</div>      
-                            
-                            
-                    <!-- Register Confirm Password -->                                                                                            
-                    <div class="field half">
-											<label for="name"> Confirm Password</label>                                                
-											<input type="password" name="RCpassword" id="password" />
-										</div>                
-                                                                            
-										<div></div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Register" class="primary" /></li>
-										<li><input type="reset" value="Clear" /></li>
-									</ul>
-								</form>
-                                            
-                                            
-								<ul class="icons">
-									<li><a href="https://www.instagram.com/zach10ten/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="https://github.com/zmt6/ProjectIT202.backup" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</article>
+							</article>                 
+           
                                                                             
                                                                             
 
@@ -399,6 +372,9 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+      
+      
+    
 
 	</body>
 </html>
