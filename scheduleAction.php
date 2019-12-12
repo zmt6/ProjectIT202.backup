@@ -1,51 +1,56 @@
 <?php
+session_start();
+
+if(session_status() == PHP_SESSION_ACTIVE && $_SESSION['id'] != '') {
+  //echo 'Session is active';
+}
+else{
+  header("Location: index.php#loginPrompt");
+  //echo 'Session is not active';
+}
+
+//Dog name
+if(isset($_POST['dogName']) && $_POST['dogName'] != ""){
+  $enteredDogName = $_POST['dogName'];
+}
+else{
+  header("Location: landingPage.php#scheduleFail");
+}
+
+//dog breed
+if(isset($_POST['dogBreed']) && $_POST['dogBreed'] != ""){
+  $enteredDogBreed = $_POST['dogBreed'];
+}
+else{
+  header("Location: landingPage.php#scheduleFail");
+}
+
+//dog size
+if(isset($_POST['dogSize']) && $_POST['dogSize'] != ""){
+  $enteredDogSize = $_POST['dogSize'];
+}
+else{
+  header("Location: landingPage.php#scheduleFail");
+}
+
+//dog size
+if(isset($_POST['date']) && $_POST['date'] != ""){
+  $enteredDate = $_POST['date'];
+}
+else{
+  header("Location: landingPage.php#scheduleFail");
+}
+
 require('config.php');
 $conn_string = "mysql:host=$host;dbname=$database;charset=utf8mb4";
 $db = new PDO($conn_string, $username, $password);
+    
+    $id = $_SESSION['id'];
+    $appointmentTable = $id."appointments";
+    $insert_query = "INSERT INTO $appointmentTable (`id`, `dogName`, `dogBreed`, `dogSize`, `date`) VALUES (NULL, '$enteredDogName', '$enteredDogBreed', '$enteredDogSize', '$enteredDate');";
+    $stmt = $db->prepare($insert_query);
+    $r = $stmt->execute();
 
-
-if($_POST['Lname']){
-  $enteredUsername = $_POST['Lname'];
-
-}
-if($_POST['Lpassword']){
-  $enteredPassword = $_POST['Lpassword'];
-}
-
-if($_POST['Dname']){
-  $enteredDogName = $_POST['Dname'];
-
-}
-if($_POST['date']){
-  $enteredDate = $_POST['date'];
-}
-
-
-
-echo "Entered Username:".$enteredUsername."<br>";
-echo "Entered Password:".$enteredPassword."<br>";
-echo "Entered Username:".$enteredUsername."<br>";
-echo "Entered Password:".$enteredPassword."<br>";
-
-
-$stmt = $db->query("SELECT * FROM ProjectAccounts where username = '$enteredUsername'");
-$result = $stmt->fetch();
-
-
-$hashed = hash('sha512', $enteredPassword);
-
-if($result['username'] == $enteredUsername && strlen($enteredUsername) > 0 && $result['password'] == $hashed){ 
-  
-  $stmt = $db->query("UPDATE ProjectAccounts SET dogName = '$enteredDogName' WHERE username = '$enteredUsername' AND password = '$enteredPassword';"); 
-  $stmt = $db->query("UPDATE ProjectAccounts SET date = '$enteredDate' WHERE username = '$enteredUsername' AND password = '$enteredPassword';"); 
-  
-  
-  header("Location: appointmentSuccess.html");
-} else {
-  echo "Login Failed<br><br>";
-  header("Location: loggedIndex.html#schedule");
-}
-
-
+header("Location: landingPage.php#scheduleSucceed");
 
 ?>

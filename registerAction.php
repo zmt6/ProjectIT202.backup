@@ -1,47 +1,52 @@
 <?php
+
+if(isset($_POST['registerUsername']) && $_POST['registerUsername'] != ""){
+  $registerUsername = $_POST['registerUsername'];
+}
+else{
+  header("Location: index.php#registerFail");
+}
+
+if(isset($_POST['registerPassword']) && $_POST['registerPassword'] != ""){
+  $registerPassword = $_POST['registerPassword'];
+}
+else{
+  header("Location: index.php#registerFail");
+}
+
+if(isset($_POST['registerPasswordConfirm']) && $_POST['registerPasswordConfirm'] != ""){
+  $registerPasswordConfirm = $_POST['registerPasswordConfirm'];
+}
+else{
+  header("Location: index.php#registerFail");
+}
+
+
+
 require('config.php');
 $conn_string = "mysql:host=$host;dbname=$database;charset=utf8mb4";
-$db = new PDO($conn_string, $username, $password);
 
-
-$stmt = $db->query("SELECT * from ProjectAccounts");
-$result = $stmt->fetch();
-
-
-  $enteredUsername = $_POST['Rname'];
-  $enteredPassword = $_POST['Rpassword'];
-  $enteredConfirmPassword = $_POST['RCpassword'];
-
-if(strlen($enteredUsername) > 0 && isset($enteredUsername)){
-  echo "Username Entered:".$enteredUsername."<br>";
-} else {
-  header("Location: index.html#register");
-}
-if(strlen($enteredPassword) > 0 && isset($enteredPassword)){
-  echo "Password Entered:".$enteredPassword."<br>";
-} else {
-  header("Location: index.html#register");
-}
-if(strlen($enteredConfirmPassword) > 0 && isset($enteredConfirmPassword)){
-  echo "Confirmation Password Entered:".$enteredConfirmPassword."<br>";
-} else {
-  header("Location: index.html#register");
-}
-
-
-$hashed = hash('sha512', $enteredPassword);
-
-if(strlen($enteredPassword) > 0 && $enteredPassword == $enteredConfirmPassword){
-  $insert_query = "INSERT INTO ProjectAccounts (username, password, dogName, date) VALUES ('$enteredUsername', '$hashed', 'NULL', 'NULL')";
-  $stmt = $db->prepare($insert_query);
+try{
+  $db = new PDO($conn_string, $username, $password);
+  
+  $hashed = password_hash($registerPassword, PASSWORD_DEFAULT); 
+  if($registerPasswordConfirm && $registerPasswordConfirm){
+    $insert_query = "INSERT INTO projectAccounts (id, username, password, appointmentTable) VALUES (NULL, '$registerUsername', '$hashed', NULL);";
+  }
+  $stmt = $db->prepare($insert_query); 
+  print_r($stmt->errorInfo());
   $r = $stmt->execute();
   
-  header("Location: registerSuccess.html");
-  
-} else {
-  header("Location: index.html#register");
-}
-
-
-
+   if($r > 0){
+      header("Location: index.php#registerSuccess");      
+    }
+    else
+    {
+      header("Location: index.php#registerFail");
+    }
+}  
+catch (Exception $e){
+  echo $e->getMessage();
+  exit("Something went wrong");
+}  
 ?>
