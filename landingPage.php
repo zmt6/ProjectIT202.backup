@@ -1,7 +1,7 @@
 <?php
 session_start();
-ini_set('display_errors',1);
-ini_set('display_startup_errors', 1);
+//ini_set('display_errors',1);
+//ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 
@@ -62,10 +62,7 @@ $db = new PDO($conn_string, $username, $password);
 			<h1>Welcome back <?php echo $_SESSION['username'] ?></h1>                          
 			<p>
       
-      <?php
-        echo "Session Data: ";
-        print_r($_SESSION);  
-      ?>
+      
 
       <br/></p>
 		</div>                                    
@@ -76,7 +73,7 @@ $db = new PDO($conn_string, $username, $password);
 		<li><a href="#schedule">Schedule</a></li>
 		<li><a href="#view">View</a></li>
 		<li><a href="#manage">Manage</a></li>
-		<li><a href="#elements">Elements</a></li>
+		<!--<li><a href="#elements">Elements</a></li>-->
 		<li><a href="#account">Account</a></li>
 		<li><a href="logout.php">Log Out</a></li>
 		<!--<li><a href="#elements">Elements</a></li>-->
