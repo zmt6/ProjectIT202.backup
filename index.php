@@ -31,7 +31,7 @@ error_reporting(E_ALL);
 	<div class="content">     
 		<div class="inner">                       
 			<h1>Dog Kennel</h1>                          
-			<p>Oh You Know<br/></p>
+			<p><br/></p>
 		</div>                                    
 	</div>
                     

@@ -1,3 +1,14 @@
+<style>
+::-webkit-datetime-edit { padding: 1em; }
+::-webkit-datetime-edit-fields-wrapper { background: white; }
+::-webkit-datetime-edit-text { color: black; padding: 0 0.3em; }
+::-webkit-datetime-edit-month-field { color: black; }
+::-webkit-datetime-edit-day-field { color: black; }
+::-webkit-datetime-edit-year-field { color: black; }
+::-webkit-inner-spin-button { display: none; }
+::-webkit-calendar-picker-indicator { background: black; }
+</style>
+
 <?php
 session_start();
 //ini_set('display_errors',1);
